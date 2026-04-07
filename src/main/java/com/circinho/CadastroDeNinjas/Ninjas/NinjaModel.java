@@ -1,9 +1,14 @@
-package com.circinho.CadastroDeNinjas;
+package com.circinho.CadastroDeNinjas.Ninjas;
+
+import org.hibernate.annotations.ManyToAny;
+
+import com.circinho.CadastroDeNinjas.Missoes.MissoesModel;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.Table;
 
 
@@ -19,6 +24,11 @@ public class NinjaModel {
 	private String nome;
 	private String email;
 	private int idade;
+	
+	// ManyToAny apenas um Ninja para para uma missão
+	@ManyToAny
+	@JoinColumn(name = "missoes_id") // Foring Key da tabela missoes
+	private MissoesModel missoes;
 	
 	// Criar um construtor vazio
 	public NinjaModel() {
