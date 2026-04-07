@@ -10,11 +10,17 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.Table;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 
 // Entity transforma uma classe em uma entidade (tabela) de banco de dados
 @Entity  
 @Table(name = "tb_cadastro")  // Nomeia a tabela no banco de dados
+@NoArgsConstructor // Usando o lombok só colocar essa anotation para criar um constructor vazio
+@AllArgsConstructor // Usando o lombok para criar um construtor com todos os campos
+@Data  // Vai criar automaticamente todos os getter´s e setter´s com essa anotation do lombok
 public class NinjaModel {
 	
 	// No ID precisa das anotações do JPA abaixo para criar o autoincremento do mesmo
@@ -30,12 +36,13 @@ public class NinjaModel {
 	@JoinColumn(name = "missoes_id") // Foring Key da tabela missoes
 	private MissoesModel missoes;
 	
-	// Criar um construtor vazio
-	public NinjaModel() {
+	// Criar um construtor vazio (No args) sem o lombok
+/*	public NinjaModel() {
 		
 	}
 	
-	// Criar um construtor com todos os campos
+	// Criar um construtor com todos os campos (All args porém esta faltando o missoes)
+	/// Sem o lombok
 	public NinjaModel(String nome, String email, Integer idade) {
 		
 		this.nome = nome;
@@ -43,7 +50,11 @@ public class NinjaModel {
 		this.idade = idade;		
 		
 	}
+	*/
+	
+	// Gette´s e setter´s sem o lombok
 
+	/*
 	public String getNome() {
 		return nome;
 	}
@@ -67,6 +78,6 @@ public class NinjaModel {
 	public void setIdade(int idade) {
 		this.idade = idade;
 	}
-	
+	*/
 	
 }
